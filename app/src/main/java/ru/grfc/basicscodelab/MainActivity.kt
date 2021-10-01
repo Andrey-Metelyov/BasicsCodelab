@@ -3,7 +3,9 @@ package ru.grfc.basicscodelab
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Divider
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                Greeting("Android")
+                MyScreenContent()
             }
         }
     }
@@ -26,7 +28,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-private fun MyApp(content: @Composable () -> Unit) {
+fun MyScreenContent() {
+    Column {
+        Greeting("Android")
+        Divider(color = Color.Black)
+        Greeting("there")
+    }
+}
+
+@Composable
+fun MyApp(content: @Composable () -> Unit) {
     BasicsCodelabTheme {
         // A surface container using the 'background' color from the theme
         Surface(color = Color.Yellow) {
@@ -44,6 +55,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     MyApp {
-        Greeting("Android")
+        MyScreenContent()
     }
 }
