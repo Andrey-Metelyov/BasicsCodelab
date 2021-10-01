@@ -28,11 +28,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyScreenContent() {
+fun MyScreenContent(names: List<String> = listOf("Android", "there", "everyone")) {
     Column {
-        Greeting("Android")
-        Divider(color = Color.Black)
-        Greeting("there")
+        for (name in names) {
+            Greeting(name)
+            Divider(color = Color.Black)
+        }
     }
 }
 
