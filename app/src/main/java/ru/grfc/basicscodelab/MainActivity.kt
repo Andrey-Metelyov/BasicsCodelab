@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,18 +17,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp()
+            MyApp {
+                Greeting("Android")
+            }
         }
     }
 
 }
 
 @Composable
-private fun MyApp() {
+private fun MyApp(content: @Composable () -> Unit) {
     BasicsCodelabTheme {
         // A surface container using the 'background' color from the theme
         Surface(color = Color.Yellow) {
-            Greeting("Android")
+            content()
         }
     }
 }
@@ -42,5 +43,7 @@ fun Greeting(name: String) {
 @Preview
 @Composable
 fun DefaultPreview() {
-    MyApp()
+    MyApp {
+        Greeting("Android")
+    }
 }
